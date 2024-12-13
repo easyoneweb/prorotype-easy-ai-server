@@ -26,7 +26,7 @@ All models should be in GGUF format and be put inside ./models directory. Be sur
 
 ## Additional information
 
-Easy-Bot-Service is built with Python 3.11. Please, before proceed be sure to check official documentation on corresponding technology.
+Easy-AI-Server is built with Python 3.11. Please, before proceed be sure to check official documentation on corresponding technology.
 
 # Copyright
 
