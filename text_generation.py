@@ -22,10 +22,6 @@ def get_message_tokens(model, role, content):
 
 
 def get_system_tokens(model, system_prompt):
-    # system_message = {
-    #     'role': 'system',
-    #     'content': SYSTEM_PROMPT
-    # }
     system_message = {
         'role': 'system',
         'content': system_prompt
@@ -36,14 +32,14 @@ def get_system_tokens(model, system_prompt):
 def get_answer(
         system_prompt,
         prompt,
-        n_ctx=512,
-        top_k=40,
-        top_p=0.95,
-        temperature=0.75,
+        temperature,
+        n_ctx=8192,
+        top_k=30,
+        top_p=0.9,
         repeat_penalty=1.1
 ):
     model = Llama(
-        model_path='models/llama2-saiga-model-q4_K.gguf',
+        model_path='models/model-q4_K.gguf',
         n_ctx=n_ctx,
         n_parts=1
     )
@@ -77,13 +73,3 @@ def get_answer(
         answer += token_str
 
     return answer
-
-
-# system_prompt = '''
-#     Ты - помощник на русском языке. Отвечай вежливо, без приветствия, но только исходя из следующей информации.
-#     Ты знаешь только следующую информацию: Количество заказов: 2. Заказы: 121211, 902211.
-#     Заказ 121211: статус заказа в обработке, заказ оплачен, заказано 12 товаров на общую сумму 433 руб.
-#     Заказ 902211: статус заказа получен, заказ оплачен, заказано 17 товаров на общую сумму 1369 руб.
-# '''
-# answer = get_answer(system_prompt, 'Что с заказом 121211')
-# print(answer)

@@ -18,7 +18,8 @@ def sentence_similarity():
 def text_generation():
     system_prompt = request.json['systemPrompt']
     prompt = request.json['prompt']
-    answer = get_answer(system_prompt, prompt)
+    temperature = request.json['temperature']
+    answer = get_answer(system_prompt, prompt, temperature)
 
     return jsonify({'answer': answer})
 
